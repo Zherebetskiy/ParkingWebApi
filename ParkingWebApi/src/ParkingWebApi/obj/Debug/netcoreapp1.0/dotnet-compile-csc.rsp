@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\bin\Debug\netcoreapp1.0\ParkingWebApi.dll"
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\bin\Debug\netcoreapp1.0\ParkingWebApi.dll"
 -r:"C:\Users\zhere\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\zhere\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
 -r:"C:\Users\zhere\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.1\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll"
@@ -170,9 +170,10 @@
 -r:"C:\Users\zhere\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\zhere\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\zhere\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
--r:"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingLib\ParkingLibrary\bin\Debug\netstandard1.6\ParkingLibrary.dll"
--resource:"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\obj\Debug\netcoreapp1.0\ParkingWebApidotnet-compile.deps.json",ParkingWebApi.deps.json
-"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\Program.cs"
-"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\Startup.cs"
-"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\Controllers\CarsController.cs"
-"C:\Users\zhere\OneDrive\Документи\Visual Studio 2015\Projects\ParkingWebApi\src\ParkingWebApi\Controllers\ValuesController.cs"
+-r:"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingLib\ParkingLibrary\bin\Debug\netstandard1.6\ParkingLibrary.dll"
+-resource:"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\obj\Debug\netcoreapp1.0\ParkingWebApidotnet-compile.deps.json",ParkingWebApi.deps.json
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\Program.cs"
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\Startup.cs"
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\Controllers\CarsController.cs"
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\Controllers\ParkingsController.cs"
+"C:\Users\zhere\OneDrive\Документи\GitHub\ParkingWebApi\ParkingWebApi\src\ParkingWebApi\Controllers\ValuesController.cs"
