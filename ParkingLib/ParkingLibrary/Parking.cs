@@ -38,9 +38,9 @@ namespace ParkingLibrary
             List<Transaction> tempTransactions = new List<Transaction>();
             lock (locker)
             {
-                for (int i = transactions.Count-1; i >= 0 ; i--)
+                for (int i = transactions.Count - 1; i >= 0; i--)
                 {
-                    if (dateNow.Subtract(transactions[i].TimeOfTransaction).TotalMinutes<1)
+                    if (dateNow.Subtract(transactions[i].TimeOfTransaction).TotalMinutes < 1)
                     {
                         tempTransactions.Add(transactions[i]);
                     }
@@ -53,34 +53,52 @@ namespace ParkingLibrary
             return tempTransactions;
         }
 
+        public List<Transaction> GetTransactionByLastMinute(string id)
+        {
+            if (FindCarById(id) == null)
+            {
+                throw new CarIsNotFoundException($"Sorry, car with id:{id} is not found!");
+            }
+            return GetTransactionByLastMinute().Where(car => car.CarId == id).ToList();
+        }
+
         public void AddCar(Car car)
         {
             if (FreePlaces == 0)
             {
                 throw new ParkingIsFullException($"Sorry, parking is full.");
             }
-            else
+            if (FindCarById(car.Id) != null)
             {
-                TransactionManager transactionManager = new TransactionManager(car.Id);
-                cars.Add(car, transactionManager);
-                Task task = new Task(transactionManager.TransactionTimer);
-                task.Start();
-                FreePlaces--;
+                throw new DuplicateCarIdException($"Sorry, car with id:{car.Id} already exist.");
             }
+
+            TransactionManager transactionManager = new TransactionManager(car.Id);
+            cars.Add(car, transactionManager);
+            Task task = new Task(transactionManager.TransactionTimer);
+            task.Start();
+            FreePlaces--;
+
         }
 
         public void RemoveCar(string id)
         {
-                var resCar = FindCarById(id);
-                if (resCar.Balance < 0)
-                {
-                    throw new FinePresentException($"Sorry, you must pay a fine {Math.Abs(resCar.Balance)}");
-                }
-                else
-                {
-                    cars.Remove(resCar);
-                    FreePlaces++;
-                }
+            var resCar = FindCarById(id);
+
+            if (resCar==null)
+            {
+                throw new CarIsNotFoundException($"Sorry, car with id:{id} is not found!");
+            }
+
+            if (resCar.Balance < 0)
+            {
+                throw new FinePresentException($"Sorry, you must pay a fine {Math.Abs(resCar.Balance)}");
+            }
+            else
+            {
+                cars.Remove(resCar);
+                FreePlaces++;
+            }
         }
 
         public Car FindCarById(string id)

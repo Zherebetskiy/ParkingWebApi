@@ -26,9 +26,10 @@
             _type = type;
         }
 
-        public void Refill(double money)
+        public Car Refill(double money)
         {
             _balance += money;
+            return this;
         }
     }
 }

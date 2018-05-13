@@ -27,6 +27,11 @@ namespace ParkingLibrary
 
         static TransactionManager()
         {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }     
+
             timerCallbackLog = new TimerCallback(Log);
             timerLog = new Timer(timerCallbackLog, new object(), 0, transactionLogTimeout);
         }
@@ -45,10 +50,13 @@ namespace ParkingLibrary
             File.AppendAllText(path, content, Encoding.UTF8);
         }
 
-        public static void GetTransactoinLog()
+        public static string GetTransactoinLog()
         {
-            string readText = File.ReadAllText(path);
-            Console.WriteLine(readText);
+            if (!File.Exists(path))
+            {
+                return "Transaction.log is empty!";
+            }
+            return File.ReadAllText(path);
         }
 
         public void TransactionTimer()

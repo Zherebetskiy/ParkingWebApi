@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ParkingLibrary;
+using ParkingLibrary.Exceptions;
 
 namespace ParkingWebApi.Controllers
 {
@@ -17,21 +18,56 @@ namespace ParkingWebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public Car GetById(string id)
+        public IActionResult GetById(string id)
         {
-            return parking.FindCarById(id);
+            var car = parking.FindCarById(id);
+            if (car == null)
+            {
+                return NotFound($"Car with id:{id} is not found!");
+            }
+            return new ObjectResult(car);
         }
 
         [HttpPost]
-        public void Post([FromBody]Car car)
+        public IActionResult Post([FromBody]Car car)
         {
-            parking.AddCar(car);
+            if (car == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                parking.AddCar(car);
+            }
+            catch (ParkingIsFullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (DuplicateCarIdException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public IActionResult Delete(string id)
         {
-            parking.RemoveCar(id);
+            try
+            {
+                parking.RemoveCar(id);
+            }
+            catch (CarIsNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (FinePresentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
         }
     }
 }
